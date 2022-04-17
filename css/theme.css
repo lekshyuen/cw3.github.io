@@ -1,0 +1,64 @@
+body {
+		background-color:aliceblue;
+		background: url(../images/popcorn.png) no-repeat right bottom,url(../images/bg.jpg) repeat;
+		background-size: 200px,auto;
+	font-size: 18px;
+		}
+#logo{
+		position: relative;
+		animation-name: move;
+		animation-duration: 3s;
+	border: solid 1px;
+	border-radius: 20px;
+		}
+#cc {
+	width: auto;
+	background-color: cornsilk;
+	width: fit-content;
+	border: solid 1px;
+}
+@keyframes move {
+		0% {left:0px;top:0px;}
+		50% {left: 250px;top:0px;}
+		100%{left: 0px;top: 0px;}
+		}
+#menu {
+	
+		border: solid thick #1E66B3;
+		text-align: center;
+		font-family: sans-serif;
+		font-size: 15px;
+		letter-spacing: 2px;
+		position: fixed;
+		left:0px;
+		}
+section,header {
+	padding-left: 200px;
+}
+section{
+	width:60%;
+	background-color: lightyellow;
+	margin: auto;
+}
+a:hover {
+		background-color:#0e94d4;
+		text-decoration: none;
+		}
+nav a {
+		background:radial-gradient(#21008f,#042331);
+		
+		color: aliceblue;
+		display: block;
+		padding: 40px 0px 40px 0px;
+		}
+footer {
+		width: 820px;
+		margin:auto;
+		}
+a {
+	text-decoration: none;
+}
+.footmenu {
+	color:black;
+	text-decoration: bold;
+}

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="author" content="Caring Cinema Team">
+	<meta name="description" content="print ticket">
+	<meta name="keywords" content="print ticket">
+	<link rel="stylesheet" href="../css/theme.css">
+	<style>
+		 @media print {
+               .noprint {
+                  visibility: hidden;
+               }
+            }
+		.info {
+			display: inline-block;
+			width: 350px;
+		}
+		form {
+			display:inline-block;
+			background-color:lightyellow;
+			padding: 30px;
+			margin-bottom: 30px;
+			margin-left: 30px;
+			border: solid 1px;
+		}
+		#movt {
+			padding-top: 10px;
+			padding-left: 40px;
+			margin-left: 10px;;
+		}
+	</style>
+<title>Print ticket</title>
+</head>
+
+<body>
+	<header class="noprint">
+		<img id="logo" src="../images/caringcinema.png" alt="caring cinema logo" title="caring cinema">
+		<h1 id="cc">Caring Cinema</h1>
+	</header>
+	
+	<nav id="menu" class="noprint">
+		<a href="home.html">HOME</a>
+		<a href="nowshowing.html">NOW SHOWING</a>
+		<a href="ticket.html">TICKET</a>
+	</nav>
+	
+	<section>
+		<h2 id="movt">Print Movie ticket</h2>
+		<div id="addhere">
+		<form id="first">
+			<input class="info" value="test" style="display:block; margin-bottom: 10px;">
+			<input class="info" value="test" style="display:block; margin-bottom: 10px;">
+			<p><span class="info">Cinema: </span>
+		  <input type="text" name="cinema" value="Festival Walk"></p>
+			<p><span class="info">Movie: </span>
+		  <input type="text" name="movie" value="Big Buck"></p>
+			<p><span class="info">Date and Time: </span>
+		  <input type="text" name="datetime" value="22 May 2022 Wed - 11:30AM"></p>
+			<p><span class="info">House No.: </span>
+		  <input type="text" name="houseno" value="4"></p>
+			<p><span class="info">Seat: </span>
+		  <input type="text" name="seat" value="A3"></p>
+		</form>
+		</div>
+	</section>
+	
+	<footer><p class="copyright">
+			@Copyright of resources belong to the corresponding copyright owners - fair use education purpose</p>
+			<div>
+			<a class="footmenu" href="home.html">Home |</a>
+			<a class="footmenu" href="design.html">Design |</a>
+			<a class="footmenu" href="mailto:lekshyuen@gmail.com">Email Us</a></div>
+	</footer>
+	<script>
+		var uu=document.getElementById('addhere');
+		uu.innerHTML="";
+		const params = new URLSearchParams(window.location.search);
+		var cinname=params.get('cinname');
+		var mname=params.get('mname');
+		var house=params.get('houseid');
+		
+		var date=params.get('dtime');
+		var seats=params.get('booked');
+		var eachbook=seats.split(" ");
+		eachbook.pop();
+		console.log(eachbook);
+		function addform(seats){
+			return '<form id="first" style="display:block; width: 380px">'+
+				'<input class="info" value="'+cinname+'" style="display:block; margin-bottom: 10px; height:30px; font-size:1em; border: none;display: block; background-color: lightyellow;">'+
+				'<input class="info" value="'+mname+'" style="display:block; margin-bottom: 10px; height:30px; font-size:1em; border: none;display: block; background-color: lightyellow;">'+
+				'<input class="info" value="'+date+'" style="display:block; margin-bottom: 10px; height:30px; font-size:1em; border: none;display: block; background-color: lightyellow;">'+
+				'<input class="info" value="'+house+'" style="display:block; margin-bottom: 10px; height:30px; font-size:1em; border: none;display: block; background-color: lightyellow;">'+
+				'<input class="info" value="Seat: '+seats+'" style="display:block; margin-bottom: 10px; height:30px; font-size:1em; border: none;display: block; background-color: lightyellow;">'+
+				'</form>'
+		}
+		eachbook.forEach(function(each){
+			uu.innerHTML+=addform(each);
+		})
+	</script>
+</body>
+</html>

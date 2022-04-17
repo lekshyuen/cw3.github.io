@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="author" content="Caring Cinema Team">
+	<meta name="description" content="now showing movies">
+	<meta name="keywords" content="now showing movies">
+	<link rel="stylesheet" href="../css/theme.css">
+	<style>
+		section {
+			width: 60%;
+			background-color:lightyellow;
+			margin: auto;
+			align-content: center;
+			border: solid 2px;
+		}
+		#nshead,#cinemahead {
+			display: table;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			border: solid 2px #FF0004;
+			font-size: 35px;
+		}
+		#ns {
+		pointer-events: none;
+		text-decoration: none;
+		}
+		.details {
+			display: inline-block;
+			width: 130px;
+		}
+		.info {
+			display: inline-block;
+		}
+		.onemovie {
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+		#location {
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+		form img {
+			height: 150px;
+			width: 200px;
+		}
+		#location img {
+			width: 650px;;
+		}
+		.ticke:hover{
+			background-color:cadetblue;
+		}
+		label {
+			font-size: 20px;
+		}
+		.moviename,.date,.time {
+			margin-top: 18px;
+			margin-bottom: 18px;
+		}
+		#selectcinema {
+			font-weight: bold;
+		}
+		#selectcinema select {
+			width: 500px;
+			height:30px;
+		}
+		#nsgroup {
+			display: table;
+		}
+		.locate {
+			text-decoration: underline;
+			font-size: 20px;
+		}
+		img {
+			width: 200px;
+		}
+	</style>
+	<script src="../javascript/cinemas.js">
+	</script>
+	<script src="../javascript/movies.js">
+	</script>
+<title>Now Showing</title>
+</head>
+
+<body>
+	<header>
+		<img id="logo" src="../images/caringcinema.png" alt="caring cinema logo" title="caring cinema">
+		<h1 id="cc">Caring Cinema</h1>
+	</header>
+	
+	<nav id="menu">
+		<a href="home.html">HOME</a>
+		<a href="nowshowing.html" id="ns">NOW SHOWING</a>
+		<a href="ticket.html">TICKET</a>
+	</nav>
+	<section>
+		<div id="nsgroup">
+		<h2 id="nshead">Now Showing Movies</h2>
+		<div id="all">
+			
+		<div id="selectcinema">
+		<label for="cinema">Select Cinema: </label>
+		<select id="cinema1" name="cinema">
+			<!--<option value="fw">City Cinema - Festival Walk</option>
+			<option value="cp">City Cinema - City Plaza</option>
+			<option value="gp">City Cinema - Grand Plaza</option>-->
+		</select></div>
+		<div id="addformhere">
+		<div class="onemovie">
+		<img  src="../images/bigbuck.jpg" alt="bigbuck" title="Bigbuck">
+		<div class="info">
+			<div>
+		<label  class="details">Movie name: </label>
+		<input type="text" name="movie" value="Big Buck"> 
+				</div>
+		<div class="date">
+		<label for="bigbuckdate" class="details">Date:</label>
+		<select id="bigbuckdate" name="bigbuckdate">
+			<!--<option value="22may">22 May, Wed</option>-->
+		</select>
+		</div>
+		<div class="time">
+		<label for="bigbucktime" class="details">Show Time: </label>
+		<select id="bigbucktime" name="bigbucktime">
+			<!--<option value="1000">10:00 AM</option>-->
+		</select>
+		</div>
+			<input type="submit" value="Buy Ticket">
+			</div>
+		</div>
+		</div>
+	</div>
+	<div id="location">
+		<h3 id="cinemahead">Cinemas location</h3>
+		<p class="locate">City Cinema - Festival Walk</p>
+		<img src="../images/fwmap.jpg" alt="festival walk">
+		
+		<p class="locate">City Cinema - City Plaza</p>
+		<img src="../images/cpmap.jpg" alt="city plaza">
+		
+		<p class="locate">City Cinema - Grand Plaza</p>
+		<img src="../images/gpmap.jpg" alt="grand plaza">
+	</div>
+			</div>
+	</section>
+	<footer><p class="copyright">
+			@Copyright of resources belong to the corresponding copyright owners - fair use education purpose</p>
+			<div>
+			<a class="footmenu" href="home.html">Home |</a>
+			<a class="footmenu" href="design.html">Design |</a>
+			<a class="footmenu" href="mailto:lekshyuen@gmail.com">Email Us</a></div>
+	</footer>
+	<script>
+		var mname=getCinemas()[0].branchName;
+		function moviename(idmoviesjs){
+			getMovies().forEach(function(qaq){
+				if (qaq.id==idmoviesjs){
+					return qaq.name
+				}
+			})
+		}
+		function movieduration(idmoviesjs){
+			getMovies().forEach(function(qaq){
+				if (qaq.id==idmoviesjs){
+					return qaq.duration
+				}
+			})
+		}
+		function moviecast(idmoviesjs){
+			getMovies().forEach(function(qaq){
+				if (qaq.id==idmoviesjs){
+					return qaq.cast
+				}
+			})
+		}
+		function moviedirector(idmoviesjs){
+			getMovies().forEach(function(qaq){
+				if (qaq.id==idmoviesjs){
+					return qaq.director
+				}
+			})
+		}
+		function addcinema(hello){
+			return '<option>'+hello.branchName+'</option>'
+		}
+		
+		function addmovies(dog,ttt){
+			var thumb=0;
+			var name=0;
+			var datet=0;
+			var houseno=-1;
+			var direct=0;
+			var cast=0;
+			var duration=0;
+			console.log("ooo",ttt,);
+			for (let i=0;i<getMovies().length;i++){
+				console.log("99");
+				if (getMovies()[i].id==dog.id){
+					thumb=getMovies()[i].thumbnail;
+					name=getMovies()[i].name;
+					duration=getMovies()[i].duration;
+					cast=getMovies()[i].cast;
+					direct=getMovies()[i].director;
+				}
+			}
+				var options="";
+				
+				for(let i=0;i<dog.shows.length;i++){
+					options+=('<option value="'+dog.shows[i].datetime+'">'+dog.shows[i].datetime+'</option>')
+				}
+			return '<form action="ticket.html"><div class="onemovie">'+'<img src="../images/'+thumb+'" alt="thumbnail">'+'<div class="info">'+
+				'<div><label  class="details">Movie name: </label><input title="moviename" type="text" name="movie" value="'+name+'"> </div>'+
+				'<div><label  class="details">Cast: </label><input title="cast" type="text" name="cast" value="'+cast+'"> </div>'+
+				'<input style="display:none;"title="cast" type="text" name="cinemaname" value="'+mname+'">'+
+				'<div><label  class="details">Director: </label><input title="director" type="text" name="director" value="'+direct+'"> </div>'+
+				'<div><label  class="details">Duration: </label><input title="duration" type="text" name="duration" value="'+duration+'"> </div>'+
+				'<div class=""><label class="details">Date:</label><select id="selectdate" title="selectdate" name="Date">'+options+'</select>'+
+				'<input title="house" type="text" name="houseid" class="houseid"'+' id="'+ttt+'" value="'+dog.shows[0].house+'">'+
+				'</div>'+'</div><input type="submit" value="Buy Ticket"></div>'+'</div></form>'
+		}
+		
+		getCinemas().forEach(function(haha){
+	document.getElementById("cinema1").innerHTML+=addcinema(haha);
+		})
+		//getCinemas().forEach(function(cat){
+			//if (cat.branchName==)
+			//document.getElementById("testing").innerHTML+=
+		//})
+		document.getElementById("cinema1").onchange=function(){
+			var dragon=document.getElementById("addformhere");
+			dragon.innerHTML="";
+			console.log("helloworld");
+			var indexnumber=this.selectedIndex;
+			getCinemas().forEach(function(cat,iron){
+			if (iron==indexnumber){
+				console.log("test",cat.branchName);
+				mname=cat.branchName;
+				cat.movies.forEach(function(ball,ttt){
+					var xyz=ttt;
+					console.log(ttt,"uu");
+					dragon.innerHTML+=addmovies(ball,xyz);
+					
+					console.log(ball.shows.datetime);
+					ball.shows.forEach(function(apple){
+						console.log(apple.datetime);
+					})
+				})
+			}
+			}
+			)}
+		//document.getElementById("date1").onchange=function(){
+			//var indexnumber=this.selectedIndex;
+			//document.getElementById("house").value=dog.shows[0].house
+		//}
+		function ok(id22,date,ind){
+			console.log("work",id22,date,ind);
+			var uu=document.querySelectorAll(".houseid");
+			var movien=moviename(id22);
+			var houseno1;
+			console.log("found");
+			getCinemas().forEach(function(zz){
+				if (zz.branchName==movien){
+					if(zz.shows.datetime==date){
+						houseno1=zz.shows.house;
+						
+					}
+				}
+			})
+			document.getElementById(id22-1).value=houseno1;
+		}
+		function abcd(){
+			var dragon=document.getElementById("addformhere");
+			dragon.innerHTML="";
+			console.log("helloworld");
+			var indexnumber=0;
+			getCinemas().forEach(function(cat,iron){
+			if (iron==indexnumber){
+				console.log(cat.branchName);
+				cat.movies.forEach(function(ball,ttt){
+					var xyz=ttt;
+					dragon.innerHTML+=addmovies(ball,xyz);
+					console.log(ball.shows.datetime);
+					ball.shows.forEach(function(apple){
+						console.log(apple.datetime);
+					})
+				})
+			}
+			}
+			)}
+		abcd();
+	</script>
+</body>
+</html>

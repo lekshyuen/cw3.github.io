@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="author" content="Caring Cinema Team">
+	<meta name="description" content="movie ticket">
+	<meta name="keywords" content="movie ticket">
+	<link rel="stylesheet" href="../css/theme.css">
+	<style>
+		section {
+			margin-left: 200px;
+			width:60%;
+			background-color: lightyellow;
+			border:solid 2px;
+			padding-bottom: 20px;
+		}
+		#ticket {
+		pointer-events: none;
+		text-decoration: none;
+		}
+		table {
+			background-color:black;
+			text-align: center;
+		}
+		table tr td {
+			border: 1px solid;
+			padding: 30px;
+		}
+		.seat:hover{
+			background-color: chocolate;
+		}
+		#screen {
+			background-color:gainsboro;
+			font-weight: bold;
+		}
+		.row {
+			background-color:khaki;
+		}
+		.seat {
+			background-color:dodgerblue;
+		}
+		#booked {
+			width:250px;
+			margin-top:30px;
+			margin-bottom: 30px;
+			border: solid 1px;
+			font-size: 20px;
+		}
+		#info {
+			width:  380px;
+			border:solid 2px;
+			margin-top: 30px;
+			margin-bottom: 30px;
+			font-size: 20px;
+		}
+	</style>
+<title>Ticket</title>
+</head>
+
+<body>
+	<header>
+		<img id="logo" src="../images/caringcinema.png" alt="caring cinema logo" title="caring cinema">
+		<h1 id="cc">Caring Cinema</h1>
+	</header>
+	
+	<nav id="menu">
+		<a href="home.html">HOME</a>
+		<a href="nowshowing.html">NOW SHOWING</a>
+		<a href="ticket.html" id="ticket">TICKET</a>
+	</nav>
+	
+	<section>
+		<form action="print.html">
+		<h2>Movie Ticket Booking</h2>
+		<div id="info">
+			<div>
+		<input name="cinname" id="cinname" value="" title="cinname">
+		<input name="mname" id="mname" value="" title="mname">
+		<input name="dtime" id="dtime" value="" title="dtime">
+			<input name="houseid" id="houseid" value="" title="houseid">
+		</div>
+		
+		<table>
+			<tr>
+				<td class="row">Row</td>
+				<td colspan="4" id="screen">Screen</td>
+			</tr>
+			<tr>
+				<td class="row">A</td>
+				<td class="seat" onclick="clik(this)" id="A1">1</td>
+				<td class="seat" onclick="clik(this)" id="A2">2</td>
+				<td class="seat" onclick="clik(this)" id="A3">3</td>
+				<td class="seat" onclick="clik(this)" id="A4">4</td>
+			</tr>
+			<tr>
+				<td class="row">B</td>
+				<td class="seat" onclick="clik(this)" id="B1">1</td>
+				<td class="seat" onclick="clik(this)" id="B2">2</td>
+				<td class="seat" onclick="clik(this)" id="B3">3</td>
+				<td class="seat" onclick="clik(this)" id="B4">4</td>
+			</tr>
+			<tr>
+				<td class="row">C</td>
+				<td class="seat" onclick="clik(this)" id="C1">1</td>
+				<td class="seat" onclick="clik(this)" id="C2">2</td>
+				<td class="seat" onclick="clik(this)" id="C3">3</td>
+				<td class="seat" onclick="clik(this)" id="C4">4</td>
+			</tr>
+		</table>
+		
+		<div id="booked">
+			<p>Seat Booked</p>
+			<p></p>
+		</div>
+			<input id="booking" type="text" value="" name="booked">
+			<input type="submit" value="Confirm">
+		</form>
+	</section>
+	
+	<footer>
+		<p>
+			<span class="copyright">@Copyright of resources belong to the corresponding copyright owners - fair use education purpose</span> |
+			<a href="home.html">Home |</a>
+			<a href="design.html">Design |</a>
+			<a href="mailto:lekshyuen@gmail.com">Email Us</a>
+		</p>
+	</footer>
+	<script>
+		function clik(xx){
+			console.log(xx.id);
+			document.getElementById("booking").value+=xx.id+" ";
+			xx.style="background-color: #a65959;";
+		}
+		const params = new URLSearchParams(window.location.search);
+		document.getElementById("cinname").value="Cinema: "+params.get('cinemaname');
+		document.getElementById("cinname").style="border: none;display: block;font-family: inherit;font-size: inherit;padding: none;width: 360px; background-color: lightyellow;";
+		document.getElementById("mname").value="Movie: "+params.get('movie');
+		document.getElementById("mname").style="border: none;display: block;font-family: inherit;font-size: inherit;padding: none;width: 360px; background-color: lightyellow;";
+		document.getElementById("dtime").value="Date and time: "+params.get('Date');
+		document.getElementById("dtime").style="border: none;display: block;font-family: inherit;font-size: inherit;padding: none;width: 360px; background-color: lightyellow;";
+		document.getElementById("houseid").value="House: "+params.get('houseid');
+		document.getElementById("houseid").style="border: none;display: block;font-family: inherit;font-size: inherit;padding: none;width: 360px; background-color: lightyellow;";
+		document.getElementById("booking").style="border: none;display: block;font-family: inherit;font-size: inherit;padding: none;width: auto; background-color: lightyellow;";
+	</script>
+</body>
+</html>

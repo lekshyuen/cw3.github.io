@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="author" content="Caring Cinema Team">
+	<meta name="description" content="home page">
+	<meta name="keywords" content="home page">
+	<link rel="stylesheet" href="../css/theme.css">
+	<style>
+		#home {
+		pointer-events: none;
+		text-decoration: none;
+		}
+
+		ul {
+			display: inline-block;
+		}
+		li {
+			margin-left: 40px;
+			list-style:square;
+		}
+		.information {
+			font-weight: bold;
+		}
+		img:hover{
+			cursor: pointer;
+		}
+		.each {
+			margin-bottom: 10px;
+			width:500px;
+			border: solid 1px;
+		}
+		#nowshowing,#upcoming {
+			width: 80%;
+			margin-top: 50px;
+			margin-bottom: 50px;
+			border: solid 5px;
+		}
+		.title {
+			text-decoration: underline;
+			font-weight: bold;
+		}
+		.moviename {
+			padding: 0px;
+			line-height: 0px;
+			margin: 35px 0px 0px 0px;
+		}
+		.center {
+			display: table;
+			margin: auto;
+		}
+		#trailer {
+			width: 80%;
+			background-color: lightyellow;
+			margin-top: 50px;
+			margin-bottom: 50px;
+			border: solid 5px;
+		}
+
+		video {
+			width: 550px;
+			display: table;
+			cursor: pointer;
+			margin: auto;
+			padding-bottom: 20px;
+			padding-top:20px;
+		}
+		#trailhead {
+			display: table;
+			border: solid 2px;
+			margin: auto;
+		}
+	</style>
+	<script src="../javascript/movies.js"></script>
+<title>Home</title>
+</head>
+	
+	
+<body>
+	<header id="homepage">
+		<img src="../images/caringcinema.png" alt="caring cinema logo" title="caring cinema" id="logo">
+		<h1 id="cc">Caring Cinema</h1>
+	</header>
+	
+	<nav id="menu">
+		<a href="home.html" id="home" >HOME</a>
+		<a href="nowshowing.html">NOW SHOWING</a>
+		<a href="ticket.html">TICKET</a>
+	</nav>
+	<section>
+	<div id="trailer">
+		<h2 id="trailhead">Big Buck - Trailer</h2>
+		<video controls poster="../images/bigbuck.jpg" onended="delayyyy()" muted>
+			<source src="https://courses.cs.cityu.edu.hk/cs2204/example/video/BigBuck.mp4" type="video/mp4">
+			<source src="https://courses.cs.cityu.edu.hk/cs2204/example/video/BigBuck.ogg" type="video/ogg">
+			Your browser does not support the video tag.
+		</video>
+	</div>
+	
+	<div id="nowshowing">
+		<div class="center" id="nows">
+		<h2 class="title">Now showing</h2>
+
+			</div>
+	</div>
+	
+	<div id="upcoming">
+		<div class="center">
+		<h2 class="title">Upcoming</h2>
+		
+		</div>
+	</div>
+	</section>
+	<footer><p class="copyright">
+			@Copyright of resources belong to the corresponding copyright owners - fair use education purpose</p>
+			<div>
+			<a class="footmenu" href="home.html">Home |</a>
+			<a class="footmenu" href="design.html">Design |</a>
+			<a class="footmenu" href="mailto:lekshyuen@gmail.com">Email Us</a></div>
+	</footer>
+	<script>
+		function add(element){
+				return '<div class="center"><div class="each"><h3 class="moviename">' + element.name + '</h3>'+
+			'<img src="../images/'+element.thumbnail+'" alt="'+element.name+'" onclick="onclik('+element.id+')">' +
+					'<ul><li><span class="information">Movie name:</span> '+element.name+'</li>'+
+					'<li><span class="information">Cast:</span> '+element.cast+'</li>'+
+					'<li><span class="information">Director:</span> '+element.director+'</li>'+
+					'<li><span class="information">Duration:</span> '+element.duration+'</li></ul></div></div>' }
+		var counter=0;
+		getMovies().forEach(function(xx){
+			if (xx.type=="now"){
+				counter++;
+			document.getElementById("nowshowing").innerHTML+=add(xx);}
+			else {
+				document.getElementById("upcoming").innerHTML+=add(xx);
+			}
+		})
+		console.log(counter);
+		console.log(getMovies().length);
+		var x=0;
+		var len=getMovies().length;
+		function changevid(){
+			if (x==len-1){
+				x=0;
+			}
+			while (getMovies()[x].type!="now"){
+				x++;
+			}
+			if (x==len-1){
+				x=0;
+			}
+			console.log(x);
+			//document.querySelector("video").innerHTML='<source src="'+getMovies()[x].src+'" type="video/mp4" >Your browser does not support the video tag.';
+			document.querySelector("video").src=getMovies()[x].src;
+			document.querySelector("video").play();
+			x++;
+		}
+		changevid();
+		var delayInMilliseconds = 2000; //1 second
+		function delayyyy(){
+			console.log("hello");
+		setTimeout(changevid, 2000);}
+		
+		function onclik(nummm){
+			getMovies().forEach(function(xx){
+				if (xx.id===nummm){
+					document.querySelector("video").src=getMovies()[nummm-1].src;
+			document.querySelector("video").play();
+					x=nummm-1;
+				}
+			}
+		)}
+</script>
+</body>
+</html>
