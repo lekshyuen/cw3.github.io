@@ -34,21 +34,21 @@ function getMovies() {
             id:4,
             type:"now",
             thumbnail:"casablanca.png",
-            src:"http://courses.cs.cityu.edu.hk/cs2204/video/casablanca-s.mp4",
+            src:"https://courses.cs.cityu.edu.hk/cs2204/video/barbecue.mp4",
             name:"Iron man",
             cast:"Cast 1, cast 2",
             director:"Micheal",
-            duration: 130
+            duration: 131
         },
 		{
             id:5,
             type:"upcoming",
             thumbnail:"casablanca.png",
-            src:"http://courses.cs.cityu.edu.hk/cs2204/video/casablanca-s.mp4",
+            src:"https://courses.cs.cityu.edu.hk/cs2204/video/cakemaking-s.mp4",
             name:"Pokemon",
             cast:"fifth movie1, fifth movie2",
             director:"Derrick",
-            duration: 130
+            duration: 132
         },
 		
     ]
