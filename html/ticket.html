@@ -108,12 +108,12 @@
 			</tr>
 		</table>
 		
-		<div id="booked">
-			<p>Seat Booked</p>
+		<div id="booked" style="width:60%;">
+			<p>Seat Booked:</p>
 			<p></p>
-		</div>
+
 			<input id="booking" type="text" value="" name="booked">
-			<input type="submit" value="Confirm"></div>
+			<input type="submit" value="Confirm"></div></div>
 		</form>
 			
 	</section>
@@ -131,6 +131,7 @@
 			console.log(xx.id);
 			document.getElementById("booking").value+=xx.id+" ";
 			xx.style="background-color: #a65959;";
+			xx.onclick="";
 		}
 		const params = new URLSearchParams(window.location.search);
 		document.getElementById("cinname").value="Cinema: "+params.get('cinemaname');

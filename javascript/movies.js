@@ -33,7 +33,7 @@ function getMovies() {
 		{
             id:4,
             type:"now",
-            thumbnail:"casablanca.png",
+            thumbnail:"barbecue.jpg",
             src:"https://courses.cs.cityu.edu.hk/cs2204/video/barbecue.mp4",
             name:"Iron man",
             cast:"Cast 1, cast 2",
@@ -43,7 +43,7 @@ function getMovies() {
 		{
             id:5,
             type:"upcoming",
-            thumbnail:"casablanca.png",
+            thumbnail:"bigbuck.jpg",
             src:"https://courses.cs.cityu.edu.hk/cs2204/video/cakemaking-s.mp4",
             name:"Pokemon",
             cast:"fifth movie1, fifth movie2",
