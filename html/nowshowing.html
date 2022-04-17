@@ -206,7 +206,7 @@
 				var options="";
 				
 				for(let i=0;i<dog.shows.length;i++){
-					options+=('<option value="'+dog.shows[i].datetime+'">'+dog.shows[i].datetime+'</option>')
+					options+=('<option class="'+dog.shows[i].house +'" value="'+dog.shows[i].datetime+'">'+dog.shows[i].datetime+'</option>')
 				}
 			return '<form action="ticket.html"><div class="onemovie">'+'<img src="../images/'+thumb+'" alt="thumbnail">'+'<div class="info">'+
 				'<div><label  class="details">Movie name: </label><input title="moviename" type="text" name="movie" value="'+name+'"> </div>'+
@@ -214,11 +214,18 @@
 				'<input style="display:none;"title="cast" type="text" name="cinemaname" value="'+mname+'">'+
 				'<div><label  class="details">Director: </label><input title="director" type="text" name="director" value="'+direct+'"> </div>'+
 				'<div><label  class="details">Duration: </label><input title="duration" type="text" name="duration" value="'+duration+'"> </div>'+
-				'<div class=""><label class="details">Date:</label><select id="selectdate" title="selectdate" name="Date">'+options+'</select>'+
-				'<input title="house" type="text" name="houseid" class="houseid"'+' id="'+ttt+'" value="'+dog.shows[0].house+'">'+
+				'<div class=""><label class="details">Date:</label><select onchange="jjj(this)" class="'+ttt +'" title="selectdate" name="Date">'+options+'</select>'+
+				'<input style="display:none;" title="house" type="text" name="houseid" class="houseid"'+' id="'+ttt+'" value="'+dog.shows[0].house+'">'+
 				'</div>'+'</div><input type="submit" value="Buy Ticket"></div>'+'</div></form>'
 		}
-		
+		function jjj(wholeselect){
+			var b=document.getElementById(wholeselect.className);
+			console.log("lll",wholeselect.className);
+			var ind=wholeselect.selectedIndex;
+			console.log("lll1",ind);
+			console.log("lll1",wholeselect.options[ind]);
+			b.value=wholeselect.options[ind].className;
+		}
 		getCinemas().forEach(function(haha){
 	document.getElementById("cinema1").innerHTML+=addcinema(haha);
 		})
